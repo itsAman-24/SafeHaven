@@ -28,17 +28,17 @@ export function SafeLocationsProvider({ children }) {
       setLoading(true)
       setError('')
       
-      // Create a query to get locations ordered by creation time
+      // Query to get locations ordered by creation time
       const q = query(collection(db, 'locations'), orderBy('createdAt', 'desc'))
       
-      // Set up real-time listener
+      // Setting upthe real-time listener
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const locationData = querySnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),
-          // Convert Firestore Timestamp to ISO string
+          // Converting the Firestore Timestamp to ISO string
           createdAt: doc.data().createdAt.toDate().toISOString(),
-          // Convert Firestore GeoPoint to lat/lng object
+          // Converting hte Firestore GeoPoint to lat/lng object
           coordinates: {
             lat: doc.data().coordinates.latitude,
             lng: doc.data().coordinates.longitude
@@ -52,7 +52,6 @@ export function SafeLocationsProvider({ children }) {
         setLoading(false)
       })
       
-      // Return unsubscribe function for cleanup
       return unsubscribe
       
     } catch (err) {
@@ -77,17 +76,17 @@ export function SafeLocationsProvider({ children }) {
         createdBy: currentUser.displayName || currentUser.email,
         userId: currentUser.uid,
         verified: false,
-        // Convert coordinates to GeoPoint for Firestore
+        // Convertting the coordinates to GeoPoint for Firestore
         coordinates: new GeoPoint(
           parseFloat(locationData.coordinates.lat), 
           parseFloat(locationData.coordinates.lng)
         )
       }
       
-      // Add location to Firestore
+      // Adding location to Firestore
       const docRef = await addDoc(collection(db, 'locations'), newLocation)
       
-      // Return the added location with proper formatting
+      // Returnig the added location with proper formatting
       const addedLocation = {
         id: docRef.id,
         ...locationData,

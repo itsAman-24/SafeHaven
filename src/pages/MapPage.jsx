@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { useSafeLocations } from '../contexts/SafeLocationsContext'
-import { useAuth } from '../contexts/AuthContext'
 import MapLocationDetails from '../components/map/MapLocationDetails'
 import MapFilters from '../components/map/MapFilters'
 import MapSearch from '../components/map/MapSearch'
@@ -101,6 +100,8 @@ function MapPage() {
     searchText: ''
   })
   const mapRef = useRef(null)
+
+  //Logging tje locations to check where the location is write or not
 
   // useEffect(() => {
   //   console.log("All locations from context:", locations)

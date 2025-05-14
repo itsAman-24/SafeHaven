@@ -6,6 +6,7 @@ import {
   updateProfile,
   onAuthStateChanged
 } from 'firebase/auth'
+
 import { auth } from '../firebase/config'
 
 const AuthContext = createContext()
@@ -24,7 +25,7 @@ export function AuthProvider({ children }) {
       setError('')
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       
-      // Update the user profile with display name
+      // updating the user profile with display name
       await updateProfile(userCredential.user, {
         displayName: displayName
       })

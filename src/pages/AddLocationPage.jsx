@@ -52,7 +52,7 @@ function AddLocationPage() {
   const [loading, setLoading] = useState(false);
   const [searchAddress, setSearchAddress] = useState("");
 
-  // Default map center (India)
+  // setting thed Default map center (India)
   const defaultCenter = [20.5937, 78.9629];
   const defaultZoom = 5;
 
@@ -103,8 +103,6 @@ function AddLocationPage() {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    // In a real app, you would use a geocoding service here
-    // For demo purposes, let's pretend we found New Delhi
     if (searchAddress.trim()) {
       const newDelhi = { lat: 28.6139, lng: 77.209 };
       handlePositionChange(newDelhi);

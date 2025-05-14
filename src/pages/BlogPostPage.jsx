@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
 import BLOG_POSTS from '../../Util/Blog'

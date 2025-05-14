@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaShieldAlt, FaUsers, FaGlobe } from 'react-icons/fa'
 
 function AboutPage() {

@@ -47,7 +47,6 @@ function ProfilePage() {
         </button>
       </div>
 
-      {/* Error */}
       {error && (
         <div className="mb-6 rounded-md border border-red-400 bg-red-100 px-4 py-3 text-red-700 dark:bg-red-900 dark:text-red-200">
           {error}
@@ -119,7 +118,6 @@ function ProfilePage() {
         </div>
       </div>
 
-      {/* Volunteer Info */}
       <div className="rounded-lg border border-blue-200 dark:border-blue-600 bg-blue-50 dark:bg-blue-900 p-6">
         <h3 className="mb-2 text-lg font-medium text-blue-800 dark:text-blue-200">
           Volunteer Information
