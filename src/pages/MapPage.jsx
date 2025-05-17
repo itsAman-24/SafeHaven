@@ -60,34 +60,34 @@ switch (type.toLowerCase()) {
 }
 
 // Component to center map to user's location
-function LocateUser() {
-  const map = useMap()
+// function LocateUser() {
+//   const map = useMap()
 
-  const centerToUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          const { latitude, longitude } = position.coords
-          map.flyTo([latitude, longitude], 14)
-        },
-        error => {
-          console.error('Error getting location:', error.message)
-        },
-        { enableHighAccuracy: true }
-      )
-    }
-  }
+//   const centerToUserLocation = () => {
+//     if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition(
+//         position => {
+//           const { latitude, longitude } = position.coords
+//           map.flyTo([latitude, longitude], 14)
+//         },
+//         error => {
+//           console.error('Error getting location:', error.message)
+//         },
+//         { enableHighAccuracy: true }
+//       )
+//     }
+//   }
 
-  return (
-    <button 
-      onClick={centerToUserLocation}
-      className="absolute z-[1000] bottom-24 right-4 bg-white p-2 rounded-full shadow-lg"
-      title="Center to your location"
-    >
-      <FaLocationArrow className="text-primary" />
-    </button>
-  )
-}
+//   return (
+//     <button 
+//       onClick={centerToUserLocation}
+//       className="absolute z-[1000] bottom-24 right-4 bg-white p-2 rounded-full shadow-lg"
+//       title="Center to your location"
+//     >
+//       <FaLocationArrow className="text-primary" />
+//     </button>
+//   )
+// }
 
 
 function MapPage() {

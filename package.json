@@ -10,15 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.1.0",
+    "@tanstack/react-query": "^5.76.1",
+    "date-fns": "^2.30.0",
+    "firebase": "^10.7.1",
+    "leaflet": "^1.9.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.22.1",
-    "leaflet": "^1.9.4",
-    "react-leaflet": "^4.2.1",
-    "firebase": "^10.7.1",
-    "date-fns": "^2.30.0",
     "react-icons": "^4.12.0",
-    "@emailjs/browser": "^4.1.0"
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "^6.22.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

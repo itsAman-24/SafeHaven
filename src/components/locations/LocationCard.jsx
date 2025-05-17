@@ -44,6 +44,7 @@ const getLocationTypeColor = (type) => {
 };
 
 function LocationCard({ location }) {
+  
   const getDirections = () => {
     const coordinates = location.coordinates;
     if (!coordinates || !coordinates.lat || !coordinates.lng) {
@@ -124,6 +125,7 @@ function LocationCard({ location }) {
         </div>
 
         <div className="mt-4 flex flex-col sm:flex-row sm:justify-between gap-2">
+
           {/* Directions Button */}
           <button
             onClick={getDirections}

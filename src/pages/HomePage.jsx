@@ -7,11 +7,21 @@ import { FaMapMarkedAlt, FaPlus } from "react-icons/fa";
 function HomePage() {
   const { locations, loading } = useSafeLocations();
   const [selectedType, setSelectedType] = useState("all");
+  const [pageNumber, setPageNumber] = useState(0);
 
+  const LOCATIONS_PER_PAGE = 3;
+  
   const filteredLocations =
-    selectedType === "all"
-      ? locations
-      : locations.filter((location) => location.type === selectedType);
+  selectedType === "all"
+  ? locations
+  : locations.filter((location) => location.type === selectedType);
+  
+  const totalPages = Math.ceil(filteredLocations.length / LOCATIONS_PER_PAGE);
+
+  const paginatedLocations = filteredLocations.slice(
+    pageNumber * LOCATIONS_PER_PAGE,
+    (pageNumber + 1) * LOCATIONS_PER_PAGE
+  );
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -62,7 +72,6 @@ function HomePage() {
             )}
           </div>
         </div>
-
         {loading ? (
           <div className="flex justify-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
@@ -70,7 +79,7 @@ function HomePage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredLocations.length > 0 ? (
-              filteredLocations.map((location) => (
+              paginatedLocations.map((location) => (
                 <LocationCard key={location.id} location={location} />
               ))
             ) : (
@@ -82,7 +91,28 @@ function HomePage() {
             )}
           </div>
         )}
-
+        // Pagination feature
+        <div className="mt-8 flex justify-center items-center gap-4">
+          <button
+            className="btn btn-secondary"
+            onClick={() => setPageNumber((prev) => Math.max(prev - 1, 0))}
+            disabled={pageNumber === 0}
+          >
+            Prev
+          </button>
+          <span className="text-gray-800 dark:text-gray-200">
+            Page {pageNumber + 1} of {totalPages}
+          </span>
+          <button
+            className="btn btn-secondary"
+            onClick={() =>
+              setPageNumber((prev) => Math.min(prev + 1, totalPages - 1))
+            }
+            disabled={pageNumber >= totalPages - 1}
+          >
+            Next
+          </button>
+        </div>
         <div className="mt-8 text-center">
           <Link to="/map" className="btn btn-secondary">
             View All on Map
