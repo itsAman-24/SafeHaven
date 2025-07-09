@@ -91,7 +91,6 @@ function HomePage() {
             )}
           </div>
         )}
-        // Pagination feature
         <div className="mt-8 flex justify-center items-center gap-4">
           <button
             className="btn btn-secondary"
